@@ -103,23 +103,7 @@ body {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-body {
-  position: relative;
-  isolation: isolate;
-}
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: url("/assets/img/crystal-logo.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: min(70vw, 720px) auto;
-  opacity: 0.10;
-  pointer-events: none;
-  z-index: -1;
-}
 hr {
   margin: 1rem 0;
   color: inherit;
