@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface RoleRepository extends JpaRepository<UserRoleEntity, String> {
+public interface RoleRepository extends JpaRepository<UserRoleEntity, Long> {
 
     Optional<UserRoleEntity> findByRole(UserRoleEnum role);
 }
