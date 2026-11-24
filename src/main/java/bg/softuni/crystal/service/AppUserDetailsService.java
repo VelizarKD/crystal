@@ -3,7 +3,7 @@ package bg.softuni.crystal.service;
 import bg.softuni.crystal.domain.entities.UserEntity;
 import bg.softuni.crystal.repositories.UserRepository;
 import java.util.List;
-
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,6 +21,8 @@ public class AppUserDetailsService implements UserDetailsService {
         this.userRepository = userRepository;
     }
 
+    @Override
+    @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String email) {
         UserEntity user = userRepository.findByEmail(email)
                 .orElseThrow(() ->

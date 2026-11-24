@@ -21,14 +21,17 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
-                                "/", "/home", "/about", "/menu", "products", "/visit", "/store",
-                                "/css/**", "/js/**", "assets/**", "favicon.ico"
+                                "/", "/home", "/about", "/menu", "/products", "/visit", "/store","/register",
+                                "/css/**", "/js/**", "/assets/**", "/favicon.ico"
                         ).permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/reservations/**").hasAnyRole("USER", "ADMIN")
                         .anyRequest().authenticated()
                 )
-                .formLogin(form -> form.permitAll())
+                .formLogin(form -> form
+                        .defaultSuccessUrl("/", true)
+                        .permitAll()
+                )
                 .logout(logout -> logout
                         .logoutSuccessUrl("/")
                         .permitAll()

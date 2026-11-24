@@ -8,10 +8,12 @@ import bg.softuni.crystal.repositories.RoleRepository;
 import bg.softuni.crystal.repositories.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Locale;
 
+@Service
 public class UserServiceImpl implements UserService{
 
     private final UserRepository userRepository;
@@ -31,7 +33,7 @@ public class UserServiceImpl implements UserService{
                 .trim()
                 .toLowerCase(Locale.ROOT);
 
-        if (userRepository.existByEmailIgnoreCase(email)) {
+        if (userRepository.existsByEmailIgnoreCase(email)) {
             return false;
         }
 
